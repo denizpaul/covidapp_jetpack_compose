@@ -22,6 +22,17 @@ class CovidViewModel @Inject constructor(
     var regionState by mutableStateOf(CovidDataState())
         private set
 
+    fun onEvent(event: HomeScreenEvents) {
+        when (event) {
+            is HomeScreenEvents.LoadGlobalCovidInfo -> {
+                loadCovidInfo()
+            }
+            is HomeScreenEvents.LoadRegionSpecificCovidInfo -> {
+                loadRegionSpecificInfo(event.region)
+            }
+        }
+    }
+
 
     fun loadCovidInfo() {
         viewModelScope.launch {

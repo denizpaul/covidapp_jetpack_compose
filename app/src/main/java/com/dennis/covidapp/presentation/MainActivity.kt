@@ -25,8 +25,8 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.loadCovidInfo()
-        viewModel.loadRegionSpecificInfo("Aus")
+        viewModel.onEvent(HomeScreenEvents.LoadGlobalCovidInfo)
+        viewModel.onEvent(HomeScreenEvents.LoadRegionSpecificCovidInfo("Aus"))
 
         setContent {
             CovidAppTheme {
